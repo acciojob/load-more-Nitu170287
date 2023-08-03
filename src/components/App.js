@@ -1,5 +1,5 @@
 
-import React from "react";
+import React,{useState} from "react";
 import './../styles/App.css';
 
 const items = [
@@ -36,9 +36,17 @@ const items = [
 ];
 
 const App = () => {
+const[itemIndex, setItemIndex] = useState(-1)
+
+
   return (
     <div>
         {/* Do not remove the main div */}
+       
+        <ul>
+          {items.filter((item,index) => index<=itemIndex).map((item)=><li>{item}</li>)}
+        </ul>
+         <button onClick={()=>setItemIndex((prevItem)=>prevItem+10)}>Load More</button>
     </div>
   )
 }
